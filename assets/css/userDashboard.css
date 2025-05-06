@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #373737;
+}
+
+.userHeader {
+    position: sticky;
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#userGreeting {
+    color: black;
+    font-size: 30px;
+    margin: 0 20px;
+}
+
+.profile-dropdown {
+    position: relative;
+    margin-left: auto;
+}
+
+button {
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    float: right;
+    padding: 10px 10px;
+    background-color: #373737;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.dropdown-content {
+    border: 1px solid #000;
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #f0f0f0;
+}
+
+.appointments{
+    margin: 30px auto;
+    width: 1250px;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.appointmentList{
+    width: 90%;
+    margin: 30px auto;
+    overflow-y: auto;
+    max-height: 200px;
+    border: 1px solid #ccc;
+}
+
+button:hover {
+    background-color: #594d5b;
+}
+
+#modalOverlay{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+caption{
+    caption-side: top;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 30px 0;
+}
+
+table, th, tr, td{
+    border: 1px solid #000000;
+    padding: 10px;
+}
+
+table{
+    margin-top: 30px;
+    border-collapse: collapse;
+    text-wrap: break-word;
+    width: 100%;
+}
+
+th{
+    background-color: #707070;
+    text-align: center;
+    border-collapse: collapse;
+    color: #fff;
+}
+
+tr{
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+    text-align: left;
+}
+
+tr:hover{
+    background-color: #707070;
+    color: #fff;
+}
+
+tr:hover td.checkInStatus{
+    color: #fff !important;
+}
+
+table{
+    width: 90%;
+    margin: auto;
+}
+
+.appointmentModal{
+    display: none;
+    border: 1px solid #000000;
+    max-width: 600px;
+    background-color: white;
+    position: fixed;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+}
+
+.exitModal{
+    position: absolute;
+    right: 5px;
+}
+
+h1{
+    margin: 10px 0;
+    text-align: center;
+    color: #333; /* Dark gray */
+    font-size: 25px;
+}
+
+form{
+    padding: 15px;
+}
+
+form label, input, textarea{
+    margin: 5px 5px;
+    font-size: 18px;
+}
+
+form input, textarea{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+select{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 5px 5px;
+}
