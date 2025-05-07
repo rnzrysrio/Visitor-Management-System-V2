@@ -24,20 +24,47 @@
     margin-left: auto;
 }
 
-.profile-dropdown button {
+.dropbtn {
     font-size: 15px;
     cursor: pointer;
     border: 3px solid #fff;
+    color: #fff;
     float: right;
     padding: 5px 8px;
     background-color: #00BFFF;
     transition: background-color 0.3s ease;
     border-radius: 10px;
-    margin: 10px 10px 0;
+    margin: 5px 10px 0;
 }
 
-.profile-dropdown button:hover {
+.dropbtn:hover {
     background-color: #fff;
+    color: #007FFF;
+}
+
+.backBtn{
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    border: 3px solid #fff;
+    float: right;
+    padding: 10px 10px;
+    background-color: #007FFF;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.backBtn a{
+    text-decoration: none;
+    color: white;
+}
+
+.backBtn:hover{
+    background-color: #fff;
+}
+
+.backBtn:hover a{
     color: #007FFF;
 }
 
@@ -46,11 +73,12 @@
     display: none;
     position: absolute;
     top: 100%;
-    right: 10px;
+    right: 0;
     background-color: white;
     min-width: 150px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1;
+    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -66,49 +94,13 @@
     background-color: #f0f0f0;
 }
 
-button {
-    font-size: 15px;
-    cursor: pointer;
-    border: none;
-    color: white;
-    float: right;
-    padding: 10px 10px;
-    background-color: #a900c7;
-    transition: background-color 0.3s ease;
-    border-radius: 10px;
-    margin: 10px;
-}
-
-button:hover {
-    background-color: #002f5e;
-}
-
 .appointments{
-    margin: 30px auto;
-    width: 1250px;
+    margin: 20px;
+    box-shadow: 10px 10px 10px lightblue;
     background-image: linear-gradient(to bottom, #007FFF, #00BFFF);
-    border: 1px solid #000000;
     border-radius: 5px;
     overflow: hidden;
-}
-
-.appointmentList{
-    width: 90%;
-    margin: 30px auto;
-    overflow-y: auto;
-    max-height: 200px;
-    border: 1px solid #ccc;
-}
-
-#modalOverlay{
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    border: 1px solid #000;
 }
 
 caption{
@@ -120,12 +112,11 @@ caption{
 }
 
 table, th, tr, td{
-    border: 1px solid #000;
+    border: 1px solid #000000;
     padding: 10px;
 }
 
 table{
-    margin-top: 30px;
     border-collapse: collapse;
     text-wrap: break-word;
     width: 100%;
@@ -152,68 +143,70 @@ tr:hover{
     background-color: #afd2f5;
 }
 
-tr:hover td.checkInStatus{
+tr:hover td .checkInStatus{
     color: #fff !important;
 }
 
-table{
-    width: 90%;
-    margin: auto;
-}
-
-.downloadPass {
-    text-align: center;
-}
-
-.downloadPass button {
-    float: none !important;
-}
-
-.appointmentModal{
-    display: none;
-    border: 1px solid #000000;
+.filter-form {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 15px 20px;
+    border-radius: 8px;
     max-width: 600px;
-    background-color: white;
-    position: fixed;
-    z-index: 1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+.filter-form form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-form label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.filter-form input[type="date"] {
+    padding: 5px 10px;
+    border: 1px solid #aaa;
     border-radius: 5px;
 }
 
-.exitModal{
-    position: absolute;
-    right: 5px;
+.filter-form button {
+    padding: 6px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-h1{
-    margin: 10px 0;
-    text-align: center;
-    color: #007FFF; /* Dark gray */
-    font-size: 25px;
+.filter-form button:hover {
+    background-color: #45a049;
 }
 
-form{
-    padding: 15px;
+.filter-form a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
 }
 
-form label, input, textarea{
-    margin: 5px 5px;
-    font-size: 18px;
+.filter-form a:hover {
+    text-decoration: underline;
 }
 
-form input, textarea{
-    width: 100%;
-    padding: 10px;
+.filter-form #status{
+    padding: 5px 10px;
+    border: 1px solid #aaa;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
 }
 
-select{
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin: 5px 5px;
+#printer{
+    margin: auto;
 }

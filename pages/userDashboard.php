@@ -16,13 +16,17 @@ if (isset($_SESSION['username'])) {
     $stmt->execute();
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
-    // $fetchAppointmentHistory = "SELECT * FROM appointments WHERE name='$name'";
-    // $result = mysqli_query($conn, $fetchAppointmentHistory);
-    // if ($result) {
-    //     $appointments = mysqli_fetch_all($result, MYSQLI_ASSOC); // Fetch all appointments for the user
-    // } else {
-    //     echo "<script>alert('Failed to fetch appointment history!');</script>";
-    // }
+
+    $stmt2 = $conn->prepare("SELECT ua.fullname, ap_vr.appointment_id, ap_vr.visit_date, ap_vr.check_in_time, ap_vr.check_out_time, ap_vr.purpose_of_visit, ap_vr.go_to_department, ap_vr.visit_status, ap_vr.approval_status FROM user_accounts ua INNER JOIN ( SELECT aa.appointment_id, aa.account_id, aa.visit_date, aa.check_in_time, aa.check_out_time, aa.purpose_of_visit, aa.go_to_department, aa.visit_status, vr.approval_status FROM all_appointments aa INNER JOIN visit_request vr ON aa.appointment_id = vr.appointment_id ) AS ap_vr ON ua.account_id = ap_vr.account_id WHERE ua.account_id = ?");
+    $stmt2->bind_param("i", $user['account_id']);
+    $stmt2->execute();
+    $result2 = $stmt2->get_result();
+
+    if ($result2) {
+        $appointments = $result2->fetch_all(MYSQLI_ASSOC);
+    } else {
+        echo "<script>alert('Failed to fetch appointment history!');</script>";
+    }
 } else {
     header("Location: loginPage.php");
     exit();
@@ -67,7 +71,7 @@ if (isset($_SESSION['username'])) {
                     <th>Department</th>
                     <th>Visit Status</th>
                     <th>Approval Status</th>
-                    <th>Download Digital Pass (For Approved Appointments)</th>
+                    <th>Download Pass</th>
                 </tr>
             </thead>
             <tbody>
@@ -77,38 +81,49 @@ if (isset($_SESSION['username'])) {
                     foreach ($appointments as $appointment) {
                         echo "<tr>";
                         echo "<td>" . htmlspecialchars($appointment['visit_date']) . "</td>";
-                        echo "<td>" . htmlspecialchars($appointment['checkin_time']) . "</td>";
-                        echo "<td>" . htmlspecialchars($appointment['checkout_time']) . "</td>";
-                        echo "<td>" . htmlspecialchars($appointment['purpose']) . "</td>";
-                        echo "<td>" . htmlspecialchars($appointment['department']) . "</td>";
+                        echo "<td>" . htmlspecialchars($appointment['check_in_time']) . "</td>";
+                        echo "<td>" . htmlspecialchars($appointment['check_out_time']) . "</td>";
+                        echo "<td>" . htmlspecialchars($appointment['purpose_of_visit']) . "</td>";
+                        echo "<td>" . htmlspecialchars($appointment['go_to_department']) . "</td>";
                         if ($appointment['visit_status'] == 'checked-in') {
-                            echo "<td class='checkInStatus' style='color: green;'>Checked-In</td>";
+                            echo "<td>Checked-In</td>";
                         } else if ($appointment['visit_status'] == 'checked-out') {
-                            echo "<td class='checkInStatus' style='color: red;'>Checked-Out</td>";
+                            echo "<td>Checked-Out</td>";
                         } else if ($appointment['visit_status'] == 'pending') {
-                            echo "<td class='checkInStatus' style='color: orange;'>Pending</td>";
+                            echo "<td>Pending</td>";
                         }
                         else if ($appointment['visit_status'] == 'cancelled') {
-                            echo "<td class='checkInStatus' style='color: gray;'>Cancelled</td>";
+                            echo "<td>Cancelled</td>";
                         } else {
-                            echo "<td class='checkInStatus' style='color: gray;'>Unknown</td>";
+                            echo "<td>Unknown</td>";
                         }
 
-                        if ($appointment['appointment_status'] == 'approved') {
-                            echo "<td class='checkInStatus' style='color: green;'>Approved</td>";
-                        } else if ($appointment['appointment_status'] == 'rejected') {
-                            echo "<td class='checkInStatus' style='color: red;'>Rejected</td>";
-                        } else if ($appointment['appointment_status'] == 'pending') {
-                            echo "<td class='checkInStatus' style='color: orange;'>Pending</td>";
+                        if ($appointment['approval_status'] == 'approved') {
+                            echo "<td>Approved</td>";
+                        } else if ($appointment['approval_status'] == 'denied') {
+                            echo "<td>Denied</td>";
+                        } else if ($appointment['approval_status'] == 'pending') {
+                            echo "<td>Pending</td>";
                         }
                         else{
-                            echo "<td class='checkInStatus' style='color: gray;'>Unknown</td>";
+                            echo "<td>Unknown</td>";
                         }
+                        
+                        if ($appointment['approval_status'] == 'approved') {
+                            echo "<td class='downloadPass'>
+                                <form action='../sql/generatePass.php' method='POST' target='_blank'>
+                                    <input type='hidden' name='appointment_id' value='" . htmlspecialchars($appointment['appointment_id']) . "'>
+                                    <button type='submit'>Pass</button>
+                                </form>
+                            </td>";
+                        } else {
+                            echo "<td>Need Approval</td>";
+                        }                        
 
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='7'>No appointments found.</td></tr>";
+                    echo "<tr><td colspan='8'>No appointments found.</td></tr>";
                 }
                 ?>
             </tbody>

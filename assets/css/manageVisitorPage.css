@@ -1,0 +1,277 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.userHeader {
+    position: sticky;
+    background-image: linear-gradient(to right, #007FFF, #00BFFF);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#userGreeting {
+    color: #fff;
+    font-size: 30px;
+    margin: 0 20px;
+}
+
+.profile-dropdown {
+    position: relative;
+    margin-left: auto;
+}
+
+.dropbtn {
+    font-size: 15px;
+    cursor: pointer;
+    border: 3px solid #fff;
+    color: #fff;
+    float: right;
+    padding: 5px 8px;
+    background-color: #00BFFF;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+    margin: 5px 10px 0;
+}
+
+.dropbtn:hover {
+    background-color: #fff;
+    color: #007FFF;
+}
+
+.backBtn{
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    border: 3px solid #fff;
+    float: right;
+    padding: 10px 10px;
+    background-color: #007FFF;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.backBtn a{
+    text-decoration: none;
+    color: white;
+}
+
+.backBtn:hover{
+    background-color: #fff;
+}
+
+.backBtn:hover a{
+    color: #007FFF;
+}
+
+.dropdown-content {
+    border: 1px solid #000;
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #f0f0f0;
+}
+
+.selectAndEditVisitor{
+    margin: 30px auto;
+    max-width: 1250px;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 30px;
+}
+
+.searchVisitor{
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #a900c7;
+}
+
+.searchVisitor label{
+    font-size: 20px;
+    color: white;
+    padding: 5px;
+}
+
+.searchVisitor input{
+    font-size: 20px;
+    padding: 5px;
+}
+
+.searchVisitor button{
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    color: #000;
+    padding: 5px;
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.appointments{
+    background-image: linear-gradient(to bottom, #007FFF, #00BFFF);
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #000;
+}
+
+caption{
+    caption-side: top;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 30px 0;
+    color: white;
+}
+
+table, th, tr, td{
+    border: 1px solid #000000;
+    padding: 10px;
+}
+
+table{
+    border-collapse: collapse;
+    text-wrap: break-word;
+    width: 100%;
+}
+
+th{
+    background-color: #007FFF;
+    text-align: center;
+    border-collapse: collapse;
+    color: #fff;
+}
+
+tr{
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+    text-align: left;
+}
+
+tr:nth-child(even){
+    background-color: #afd2f5;
+}
+
+tr:hover{
+    background-color: #afd2f5;
+}
+
+tr:hover td .checkInStatus{
+    color: #fff !important;
+}
+
+.actionBtn{
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    background-color: #007FFF;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.actionBtn:hover{
+    background-color: #00BFFF;
+}
+
+#actionCell{
+    text-align: center;
+}
+
+.editVisitorInfoModal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.editVisitorInfoModal .modalContent {
+    position: inherit;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.editVisitorInfoModal .closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.editVisitorInfoModal .closeBtn:hover {
+    color: #000;
+}
+
+.closeBtn:hover,
+.closeBtn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#editVisitorForm {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#editVisitorForm input,
+#editVisitorForm select, #editVisitorForm textarea {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 10px;
+}
+
+#editVisitorForm button {
+    padding: 10px;
+    background-color: #007FFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#editVisitorForm button:hover {
+    background-color: #a900c7;
+}

@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.userHeader {
+    position: sticky;
+    background-image: linear-gradient(to right, #007FFF, #00BFFF);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#userGreeting {
+    color: #fff;
+    font-size: 30px;
+    margin: 0 20px;
+}
+
+.profile-dropdown {
+    position: relative;
+    margin-left: auto;
+}
+
+.dropbtn {
+    font-size: 15px;
+    cursor: pointer;
+    border: 3px solid #fff;
+    color: #fff;
+    float: right;
+    padding: 5px 8px;
+    background-color: #00BFFF;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+    margin: 5px 10px 0;
+}
+
+.dropbtn:hover {
+    background-color: #fff;
+    color: #007FFF;
+}
+
+.dropdown-content {
+    border: 1px solid #000;
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 10px;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #f0f0f0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 30px;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+li a:hover {
+    background-color: #fff;
+    color: #007FFF;
+}
+
+
+.dashboard {
+    color: #fff;
+    background-image: linear-gradient(to bottom, #007FFF, #00BFFF);
+    padding: 20px;
+    border-radius: 5px;
+    width: 90%;
+    box-shadow: 10px 10px 10px lightblue;
+    margin: 20px auto;
+}
+
+.dashboard hr {
+    margin: auto;
+    border: none;
+    width: 150px;
+    height: 2px;
+    background-color: #fff;
+}
+
+.dashboard h1 {
+    margin: 20px 0;
+    text-align: center;
+    font-size: 30px;
+}
+
+.dashboard .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin: 20px;
+}
+
+.dashboard .card-container .card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard .card-container .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard .card-container .card h2 {
+    font-size: 24px;
+    color: #676cff;
+    margin-bottom: 15px;
+}
+
+.dashboard .card-container .card p {
+    font-size: 32px;
+    font-weight: bold;
+    color: #4a69bd;
+    margin-top: 10px;
+}
